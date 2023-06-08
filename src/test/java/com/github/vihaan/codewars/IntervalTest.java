@@ -7,6 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class IntervalTest {
 
     @Test
+    public void shouldHandleEmptyIntervals() {
+        assertEquals(0, Interval.sumIntervals(new int[][]{}));
+        assertEquals(0, Interval.sumIntervals(new int[][]{{4, 4}, {6, 6}, {8, 8}}));
+    }
+
+    @Test
     public void shouldAddDisjoinedIntervals() {
         assertEquals(9, Interval.sumIntervals(new int[][]{{1, 2}, {6, 10}, {11, 15}}));
         assertEquals(11, Interval.sumIntervals(new int[][]{{4, 8}, {9, 10}, {15, 21}}));

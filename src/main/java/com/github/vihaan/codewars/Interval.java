@@ -1,9 +1,6 @@
 package com.github.vihaan.codewars;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Write a function called sumIntervals/sum_intervals that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
@@ -60,16 +57,27 @@ public class Interval {
         List<int[]> outputIntervals = new ArrayList<>();
         while (!intervalsCollection.isEmpty()) {
             int[] currentInterval = intervalsCollection.pop();
-            for (int[] interval : intervalsCollection) {
+
+            for (Iterator<int[]> intervalIterator = intervalsCollection.iterator(); intervalIterator.hasNext(); ) {
+                int[] interval = intervalIterator.next();
                 if (isOverlapping(currentInterval, interval)) {
                     currentInterval = (mergeOverlappingIntervals(currentInterval, interval));
-                    intervalsCollection.remove(interval);
+                    intervalIterator.remove();
                 }
             }
             outputIntervals.add(currentInterval);
+//            for (int[] interval : intervalsCollection) {
+//                if (isOverlapping(currentInterval, interval)) {
+//                    currentInterval = (mergeOverlappingIntervals(currentInterval, interval));
+//                    intervalsCollection.remove(interval);
+//                }
+//            }
         }
-        outputIntervals.forEach(element -> System.out.println(element[0] + " + " + element[1]));
-        return 0;
+        int output = outputIntervals.stream().mapToInt(i -> Math.subtractExact(Math.abs(i[1]), Math.abs(i[0]))).sum();
+        return output;
+        //map(interval -> Math.abs(interval[1]) - Math.abs(interval[0])).collect(Collectors.)
+//        outputIntervals.forEach(element -> System.out.println(element[0] + " + " + element[1]));
+//        return 0;
     }
 
     private static boolean isOverlapping(int[] interval1, int[] interval2) {
