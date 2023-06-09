@@ -1,5 +1,8 @@
 package com.github.vihaan.codewars.kyu5;
 
+import java.util.Map;
+import java.util.stream.Collectors;
+
 /*
 Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
 
@@ -19,13 +22,13 @@ scramble('katas', 'steak') ==> False
 public class Scramblies {
 
     public static boolean scramble(String str1, String str2) {
-        char[] str2chars = str2.toCharArray();
-        for (int i = 0; i < str2.length(); i++) {
-            String charFromStr2 = Character.toString(str2chars[i]);
-            if (!str1.contains(charFromStr2)) {
+        Map<Integer, Long> charsCount2 = str2.chars().boxed().collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+        Map<Integer, Long> charsCount1 = str1.chars().boxed().collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+
+        for (Map.Entry<Integer, Long> charCount2 : charsCount2.entrySet()) {
+            if (charsCount1.getOrDefault(charCount2.getKey(), 0L) < charCount2.getValue()) {
                 return false;
             }
-            str1 = str1.replaceFirst(charFromStr2, "0");
         }
         return true;
     }
