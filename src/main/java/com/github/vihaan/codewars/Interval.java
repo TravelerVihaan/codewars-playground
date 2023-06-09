@@ -59,15 +59,12 @@ public class Interval {
                 int[] nextInterval = intervalIterator.next();
                 if (isOverlapping(currentInterval, nextInterval)) {
                     currentInterval = (mergeOverlappingIntervals(currentInterval, nextInterval));
-                    //intervalIterator.remove();
+                    outputIntervals.remove(List.of(nextInterval[0], nextInterval[1]));
                     intervalIterator.set(currentInterval);
                 }
             }
             outputIntervals.add(Arrays.stream(currentInterval).boxed().toList());
         }
-        //counter++;
-        //TODO check output intervals
-        //}
         int output = outputIntervals.stream().mapToInt(Interval::calculateInterval).sum();
         return output;
     }
