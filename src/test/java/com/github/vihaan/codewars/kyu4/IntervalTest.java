@@ -1,8 +1,8 @@
-package com.github.vihaan.codewars;
+package com.github.vihaan.codewars.kyu4;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class IntervalTest {
 

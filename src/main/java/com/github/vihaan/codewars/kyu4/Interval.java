@@ -1,4 +1,4 @@
-package com.github.vihaan.codewars;
+package com.github.vihaan.codewars.kyu4;
 
 import java.util.*;
 
@@ -60,7 +60,8 @@ public class Interval {
                 if (isOverlapping(currentInterval, nextInterval)) {
                     currentInterval = (mergeOverlappingIntervals(currentInterval, nextInterval));
                     outputIntervals.remove(List.of(nextInterval[0], nextInterval[1]));
-                    intervalIterator.set(currentInterval);
+                    intervalIterator.remove();
+                    intervalIterator.add(currentInterval);
                 }
             }
             outputIntervals.add(Arrays.stream(currentInterval).boxed().toList());
