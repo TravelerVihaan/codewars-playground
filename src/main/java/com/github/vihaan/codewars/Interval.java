@@ -51,7 +51,7 @@ public class Interval {
 
     public static int sumIntervals(int[][] intervals) {
         LinkedList<int[]> intervalsCollection = new LinkedList<>(Arrays.asList(intervals));
-        Set<int[]> outputIntervals = new HashSet<>();
+        Set<List<Integer>> outputIntervals = new HashSet<>();
         int loopRounds = intervalsCollection.size();
         for (int i = 0; i < loopRounds; i++) {
             int[] currentInterval = intervalsCollection.pop();
@@ -63,7 +63,7 @@ public class Interval {
                     intervalIterator.set(currentInterval);
                 }
             }
-            outputIntervals.add(currentInterval);
+            outputIntervals.add(Arrays.stream(currentInterval).boxed().toList());
         }
         //counter++;
         //TODO check output intervals
@@ -72,9 +72,9 @@ public class Interval {
         return output;
     }
 
-    private static int calculateInterval(int[] interval) {
-        int startInterval = interval[0];
-        int endInterval = interval[1];
+    private static int calculateInterval(List<Integer> interval) {
+        int startInterval = interval.get(0);
+        int endInterval = interval.get(1);
         if (Integer.signum(startInterval) == Integer.signum(endInterval)) {
             return endInterval - startInterval;
         } else {
