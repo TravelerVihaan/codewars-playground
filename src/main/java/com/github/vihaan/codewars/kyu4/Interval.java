@@ -62,11 +62,9 @@ public class Interval {
                     currentInterval = (mergeOverlappingIntervals(currentInterval, nextInterval));
                     outputIntervals.remove(List.of(nextInterval[0], nextInterval[1]));
                     intervalIterator.remove();
+                    //TODO some check if multiple overlap?
                     intervalIterator.add(currentInterval);
                     overlapsCounter++;
-                    if (overlapsCounter == loopRounds) {
-                        break;
-                    }
                 }
             }
             //TODO remove updated interval

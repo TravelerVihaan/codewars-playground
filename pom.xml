@@ -5,9 +5,9 @@
     <groupId>com.github.vihaan</groupId>
     <artifactId>codewars-playground</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>codewars-playground</name>
     <packaging>jar</packaging>
 
-    <name>codewars-playground</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
