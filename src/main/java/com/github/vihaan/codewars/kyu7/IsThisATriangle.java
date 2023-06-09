@@ -1,4 +1,4 @@
-package com.github.vihaan.codewars;
+package com.github.vihaan.codewars.kyu7;
 
 import java.util.Arrays;
 

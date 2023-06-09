@@ -58,22 +58,21 @@ public class Interval {
         LinkedList<int[]> intervalsCollection = new LinkedList<>(Arrays.asList(intervals));
         Set<List<Integer>> outputIntervals = new HashSet<>();
         int loopRounds = intervalsCollection.size();
-        int overlapsCounter = 0;
         for (int i = 0; i < loopRounds; i++) {
             int[] currentInterval = intervalsCollection.pop();
             for (ListIterator<int[]> intervalIterator = intervalsCollection.listIterator(); intervalIterator.hasNext(); ) {
                 int[] nextInterval = intervalIterator.next();
                 if (isOverlapping(currentInterval, nextInterval)) {
-                    currentInterval = (mergeOverlappingIntervals(currentInterval, nextInterval));
+                    currentInterval = mergeOverlappingIntervals(currentInterval, nextInterval);
                     outputIntervals.remove(List.of(nextInterval[0], nextInterval[1]));
                     intervalIterator.remove();
-                    //TODO some check if multiple overlap?
                     intervalIterator.add(currentInterval);
-                    overlapsCounter++;
                 }
             }
-            //TODO remove updated interval
-            outputIntervals.add(Arrays.stream(currentInterval).boxed().toList());
+            int[] finalCurrentInterval = currentInterval;
+            if (outputIntervals.stream().noneMatch(outputInterval -> isFullOverlapped(finalCurrentInterval, outputInterval.toArray(Integer[]::new)))) {
+                outputIntervals.add(Arrays.stream(currentInterval).boxed().toList());
+            }
         }
         return outputIntervals.stream().mapToInt(Interval::calculateInterval).sum();
     }
@@ -86,6 +85,10 @@ public class Interval {
         } else {
             return Math.abs(endInterval) + Math.abs(startInterval);
         }
+    }
+
+    public static boolean isFullOverlapped(int[] overlappedInterval, Integer[] overlappingInterval) {
+        return overlappedInterval[0] > overlappingInterval[0] && overlappedInterval[1] < overlappingInterval[1];
     }
 
     private static boolean isOverlapping(int[] interval1, int[] interval2) {

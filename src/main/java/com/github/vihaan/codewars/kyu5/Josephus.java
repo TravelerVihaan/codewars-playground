@@ -1,4 +1,4 @@
-package com.github.vihaan.codewars;
+package com.github.vihaan.codewars.kyu5;
 
 import java.util.ArrayList;
 import java.util.Collection;

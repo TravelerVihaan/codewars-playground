@@ -1,4 +1,4 @@
-package com.github.vihaan.codewars;
+package com.github.vihaan.codewars.kyu6;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
