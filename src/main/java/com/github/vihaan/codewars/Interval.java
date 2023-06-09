@@ -51,20 +51,23 @@ public class Interval {
 
     public static int sumIntervals(int[][] intervals) {
         LinkedList<int[]> intervalsCollection = new LinkedList<>(Arrays.asList(intervals));
-        List<int[]> outputIntervals = new ArrayList<>();
-        while (!intervalsCollection.isEmpty()) {
+        Set<int[]> outputIntervals = new HashSet<>();
+        int loopRounds = intervalsCollection.size();
+        for (int i = 0; i < loopRounds; i++) {
             int[] currentInterval = intervalsCollection.pop();
-
-            for (Iterator<int[]> intervalIterator = intervalsCollection.iterator(); intervalIterator.hasNext(); ) {
-                int[] interval = intervalIterator.next();
-                if (isOverlapping(currentInterval, interval)) {
-                    currentInterval = (mergeOverlappingIntervals(currentInterval, interval));
-                    intervalIterator.remove();
+            for (ListIterator<int[]> intervalIterator = intervalsCollection.listIterator(); intervalIterator.hasNext(); ) {
+                int[] nextInterval = intervalIterator.next();
+                if (isOverlapping(currentInterval, nextInterval)) {
+                    currentInterval = (mergeOverlappingIntervals(currentInterval, nextInterval));
+                    //intervalIterator.remove();
+                    intervalIterator.set(currentInterval);
                 }
             }
             outputIntervals.add(currentInterval);
-            //TODO check output intervals
         }
+        //counter++;
+        //TODO check output intervals
+        //}
         int output = outputIntervals.stream().mapToInt(Interval::calculateInterval).sum();
         return output;
     }
