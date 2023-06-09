@@ -10,16 +10,13 @@ import java.util.*;
  * Overlapping Intervals
  * <p>
  * List containing overlapping intervals:
- * <p>
  * [
  * [1, 4],
  * [7, 10],
  * [3, 5]
  * ]
- * <p>
  * The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
  * Examples:
- * <p>
  * sumIntervals( [
  * [1, 2],
  * [6, 10],
@@ -66,18 +63,20 @@ public class Interval {
                 }
             }
             outputIntervals.add(currentInterval);
-//            for (int[] interval : intervalsCollection) {
-//                if (isOverlapping(currentInterval, interval)) {
-//                    currentInterval = (mergeOverlappingIntervals(currentInterval, interval));
-//                    intervalsCollection.remove(interval);
-//                }
-//            }
+            //TODO check output intervals
         }
-        int output = outputIntervals.stream().mapToInt(i -> Math.subtractExact(Math.abs(i[1]), Math.abs(i[0]))).sum();
+        int output = outputIntervals.stream().mapToInt(Interval::calculateInterval).sum();
         return output;
-        //map(interval -> Math.abs(interval[1]) - Math.abs(interval[0])).collect(Collectors.)
-//        outputIntervals.forEach(element -> System.out.println(element[0] + " + " + element[1]));
-//        return 0;
+    }
+
+    private static int calculateInterval(int[] interval) {
+        int startInterval = interval[0];
+        int endInterval = interval[1];
+        if (Integer.signum(startInterval) == Integer.signum(endInterval)) {
+            return endInterval - startInterval;
+        } else {
+            return Math.abs(endInterval) + Math.abs(startInterval);
+        }
     }
 
     private static boolean isOverlapping(int[] interval1, int[] interval2) {
