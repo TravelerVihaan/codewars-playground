@@ -53,6 +53,7 @@ public class Interval {
         LinkedList<int[]> intervalsCollection = new LinkedList<>(Arrays.asList(intervals));
         Set<List<Integer>> outputIntervals = new HashSet<>();
         int loopRounds = intervalsCollection.size();
+        int overlapsCounter = 0;
         for (int i = 0; i < loopRounds; i++) {
             int[] currentInterval = intervalsCollection.pop();
             for (ListIterator<int[]> intervalIterator = intervalsCollection.listIterator(); intervalIterator.hasNext(); ) {
@@ -62,12 +63,16 @@ public class Interval {
                     outputIntervals.remove(List.of(nextInterval[0], nextInterval[1]));
                     intervalIterator.remove();
                     intervalIterator.add(currentInterval);
+                    overlapsCounter++;
+                    if (overlapsCounter == loopRounds) {
+                        break;
+                    }
                 }
             }
+            //TODO remove updated interval
             outputIntervals.add(Arrays.stream(currentInterval).boxed().toList());
         }
-        int output = outputIntervals.stream().mapToInt(Interval::calculateInterval).sum();
-        return output;
+        return outputIntervals.stream().mapToInt(Interval::calculateInterval).sum();
     }
 
     private static int calculateInterval(List<Integer> interval) {
