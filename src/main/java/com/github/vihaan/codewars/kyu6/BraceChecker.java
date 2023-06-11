@@ -26,16 +26,18 @@ public class BraceChecker {
             return false;
         }
 
-        //TODO Refactor
-        for (Map.Entry<Character, Character> bracesPair : BRACES_PAIRS.entrySet()) {
-            if (bracesPair.getKey() == null) {
-                continue;
-            }
-            String b = bracesPair.getKey().toString().concat(bracesPair.getValue().toString());
-            if (braces.contains(b)) {
-                braces = braces.replace(b, "");
+        for (int i = 0; i < BRACES_PAIRS.size(); i++) {
+            for (Map.Entry<Character, Character> bracesPair : BRACES_PAIRS.entrySet()) {
+                if (bracesPair.getKey() == null) {
+                    continue;
+                }
+                String notNestedBracesPair = bracesPair.getKey().toString().concat(bracesPair.getValue().toString());
+                if (braces.contains(notNestedBracesPair)) {
+                    braces = braces.replace(notNestedBracesPair, "");
+                }
             }
         }
+
         char[] bracesChars = braces.toCharArray();
         int bracesLength = bracesChars.length;
         for (int i = 0; i < bracesLength / 2; i++) {

@@ -46,6 +46,6 @@ mix(s1, s2) --> "1:mmmmmm/E:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/E:ee/E
 public class Mixing {
 
     public static String mix(String s1, String s2) {
-        // your code
+        return "";// your code
     }
 }
