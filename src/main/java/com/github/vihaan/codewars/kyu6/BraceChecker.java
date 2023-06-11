@@ -21,28 +21,30 @@ Examples
  */
 public class BraceChecker {
 
-  public boolean isValid(String braces) {
-    if (braces.length() % 2 != 0) {
-      return false;
-    }
-    for(Map.Entry<Character, Character> bracesPair : BRACES_PAIRS.entrySet()) {
-      if (bracesPair.getKey() == null){
-        continue;
-      }
-      String b = bracesPair.getKey().toString().concat(bracesPair.getValue().toString());
-      if (braces.contains(b)) {
-        braces = braces.replace(b, "");
-      }
-    }
-    char[] bracesChars = braces.toCharArray();
-    int bracesLength = bracesChars.length;
-    for (int i = 0; i < bracesLength / 2; i++) {
-      if (BRACES_PAIRS.getOrDefault(bracesChars[i], '0') != bracesChars[bracesLength - 1 - i]) {
-        return false;
-      }
-    }
-    return true;
-  }
+    public boolean isValid(String braces) {
+        if (braces.length() % 2 != 0) {
+            return false;
+        }
 
-  private static final Map<Character, Character> BRACES_PAIRS = Map.of('(', ')', '{', '}', '[', ']');
+        //TODO Refactor
+        for (Map.Entry<Character, Character> bracesPair : BRACES_PAIRS.entrySet()) {
+            if (bracesPair.getKey() == null) {
+                continue;
+            }
+            String b = bracesPair.getKey().toString().concat(bracesPair.getValue().toString());
+            if (braces.contains(b)) {
+                braces = braces.replace(b, "");
+            }
+        }
+        char[] bracesChars = braces.toCharArray();
+        int bracesLength = bracesChars.length;
+        for (int i = 0; i < bracesLength / 2; i++) {
+            if (BRACES_PAIRS.getOrDefault(bracesChars[i], '0') != bracesChars[bracesLength - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static final Map<Character, Character> BRACES_PAIRS = Map.of('(', ')', '{', '}', '[', ']');
 }
