@@ -44,7 +44,7 @@ public class AddingBigNumbers {
     if (aNumbers.size() != bNumbers.size()) {
         for (int i = reps; i < longerNumbers.size(); i++) {
             int sum = longerNumbers.get(i) + accumulator;
-            if (sum > 10) {
+            if (sum >= 10) {
                 accumulator = sum / 10;
                 resultNumbers.add(sum % 10);
             } else {
@@ -59,6 +59,9 @@ public class AddingBigNumbers {
     }
     StringBuilder outputBuilder = new StringBuilder();
     Collections.reverse(resultNumbers);
+    while(resultNumbers.get(0).equals(0)){
+        resultNumbers.remove(0);
+    }
     resultNumbers.forEach(outputBuilder::append);
 
     return outputBuilder.toString();
