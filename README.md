@@ -10,3 +10,4 @@ Each task has description in comment above class in java source file.
  * Mixing
  * BalancedParens
  * PokerHand
+ * BattleField
