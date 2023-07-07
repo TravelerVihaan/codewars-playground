@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 /*
 We need to sum big numbers and we require your help.
@@ -25,13 +26,13 @@ public class AddingBigNumbers {
     List<Integer> aNumbers = extractNumbers(a);
     List<Integer> bNumbers = extractNumbers(b);
     List<Integer> resultNumbers = new ArrayList<>();
-    List<Integer> longerNumbers = List.of(aNumbers, bNumbers).stream().max(Comparator.comparing(List::size)).orElseGet(Collections::emptyList);
+    List<Integer> longerNumbers = Stream.of(aNumbers, bNumbers).max(Comparator.comparing(List::size)).orElseGet(Collections::emptyList);
 
     int reps = Math.min(aNumbers.size(), bNumbers.size());
     int accumulator = 0;
     for (int i=0; i < reps; i++) {
         int sum = aNumbers.get(i) + bNumbers.get(i) + accumulator;
-        if (sum > 10) {
+        if (sum >= 10) {
             accumulator = sum / 10;
             resultNumbers.add(sum % 10);
         } else {
@@ -40,14 +41,20 @@ public class AddingBigNumbers {
         }
     }
 
-    for(int i=reps; i < longerNumbers.size(); i++) {
-        int sum = longerNumbers.get(i) + accumulator;
-        if (sum > 10) {
-            accumulator = sum / 10;
-            resultNumbers.add(sum % 10);
-        } else {
-            accumulator = 0;
-            resultNumbers.add(sum);
+    if (aNumbers.size() != bNumbers.size()) {
+        for (int i = reps; i < longerNumbers.size(); i++) {
+            int sum = longerNumbers.get(i) + accumulator;
+            if (sum > 10) {
+                accumulator = sum / 10;
+                resultNumbers.add(sum % 10);
+            } else {
+                accumulator = 0;
+                resultNumbers.add(sum);
+            }
+        }
+    } else {
+        if (accumulator != 0) {
+            resultNumbers.add(accumulator);
         }
     }
     StringBuilder outputBuilder = new StringBuilder();
