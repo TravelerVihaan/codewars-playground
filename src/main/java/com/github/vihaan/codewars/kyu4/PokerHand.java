@@ -1,5 +1,8 @@
 package com.github.vihaan.codewars.kyu4;
 
+import java.util.Arrays;
+import java.util.List;
+
 /*
 A famous casino is suddenly faced with a sharp decline of their revenues. They decide to offer Texas hold'em also online. Can you help them by writing an algorithm that can rank poker hands?
 Task
@@ -39,13 +42,28 @@ If you finished this kata, you might want to continue with Sortable Poker Hands
  */
 public class PokerHand
 {      
-    public enum Result { TIE, WIN, LOSS } 
+    public enum Result { TIE, WIN, LOSS }
+
+    private final List<String> cards;
 
     PokerHand(String hand)
     {
+        cards = Arrays.stream(hand.split(" ")).sorted().toList();
     }
 
     public Result compareWith(PokerHand hand) {        
+        if (cards.equals(hand.getCards())) {
+            return Result.TIE;
+        }
         return Result.TIE;
+
     }
+
+    public List<String> getCards() {
+        return cards;
+    }
+
+    private static final int HAND_SIZE = 14;
+    private static final List<String> CARD_VALUES = List.of("2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A");
+    private static final List<String> CARD_SUITS = List.of("S", "H", "D", "C");
 }
