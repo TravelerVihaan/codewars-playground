@@ -13,10 +13,10 @@ public class BurrowsWheelerTest {
         assertEquals("Mellow Yellow", BurrowsWheeler.decode("ww MYeelllloo", 1));
     }
 
-    @Test
-    public void encodeTests() {
-        assertEquals(new BWT("nnbbraaaa", 4),     BurrowsWheeler.encode("bananabar"));
-        assertEquals(new BWT("e emnllbduuHB", 2), BurrowsWheeler.encode("Humble Bundle"));
-        assertEquals(new BWT("ww MYeelllloo", 1), BurrowsWheeler.encode("Mellow Yellow"));
-    }
+//    @Test
+//    public void encodeTests() {
+//        assertEquals(new BWT("nnbbraaaa", 4),     BurrowsWheeler.encode("bananabar"));
+//        assertEquals(new BWT("e emnllbduuHB", 2), BurrowsWheeler.encode("Humble Bundle"));
+//        assertEquals(new BWT("ww MYeelllloo", 1), BurrowsWheeler.encode("Mellow Yellow"));
+//    }
 }

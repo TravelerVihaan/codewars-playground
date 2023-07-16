@@ -1,10 +1,11 @@
 package com.github.vihaan.codewars.kyu3;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.math.BigInteger;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class AnagramTest {
   @Test

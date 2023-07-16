@@ -1,9 +1,11 @@
 package com.github.vihaan.codewars.kyu4;
 
 import java.math.BigInteger;
+import java.util.stream.LongStream;
 
 /*
-Given two numbers: 'left' and 'right' (1 <= 'left' <= 'right' <= 200000000000000) return sum of all '1' occurencies in binary representations of numbers between 'left' and 'right' (including both)
+Given two numbers: 'left' and 'right' (1 <= 'left' <= 'right' <= 200000000000000)
+return sum of all '1' occurencies in binary representations of numbers between 'left' and 'right' (including both)
 
 Example:
 countOnes 4 7 should return 8, because:
@@ -17,7 +19,9 @@ WARNING: Segment may contain billion elements, to pass this kata, your solution 
 public class BitCount {
 
     public static BigInteger countOnes(long left, long right) {
-        // Your code here
-        return null;
+        return BigInteger.valueOf(LongStream
+                .rangeClosed(left, right)
+                .mapToObj(Long::toBinaryString)
+                .mapToLong(binaryNumber -> binaryNumber.replaceAll("0","").length()).sum());
     }
 }
