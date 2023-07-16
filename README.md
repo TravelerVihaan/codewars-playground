@@ -11,3 +11,10 @@ Each task has description in comment above class in java source file.
  * BalancedParens
  * PokerHand
  * BattleField
+ * Dinglemouse
+ * Anagrams
+ * Stream
+ * Maze
+ * BitCount
+ * Equation
+ * BurrowsWheeler
