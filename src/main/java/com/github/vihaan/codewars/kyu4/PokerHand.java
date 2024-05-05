@@ -1,7 +1,11 @@
 package com.github.vihaan.codewars.kyu4;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /*
 A famous casino is suddenly faced with a sharp decline of their revenues. They decide to offer Texas hold'em also online. Can you help them by writing an algorithm that can rank poker hands?
@@ -56,6 +60,17 @@ public class PokerHand
             return Result.TIE;
         }
         return Result.TIE;
+
+    }
+
+    private int calculateHandValue(List<String> cards) {
+        var grouped = cards.stream().map(card -> card.substring(0,1)).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        var maxocurrences = grouped.entrySet()
+                .stream()
+                .max(Map.Entry.<String, Long>comparingByValue()).orElse(0);
+
+                //.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+
 
     }
 
