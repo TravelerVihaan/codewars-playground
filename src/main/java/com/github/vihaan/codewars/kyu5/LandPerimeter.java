@@ -1,10 +1,5 @@
 package com.github.vihaan.codewars.kyu5;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Given an array arr of strings, complete the function by calculating
  * the total perimeter of all the islands. Each piece of land will be marked with 'X' while
@@ -31,24 +26,37 @@ import java.util.Map;
  */
 
 public class LandPerimeter {
-	
-	public static String landPerimeter(String[] arr) {
-        int maxHeight = arr.length;
 
-        Map<Integer, List<Integer>> islands = new HashMap<>();
+    public static String landPerimeter(String[] arr) {
+
+        int[][] matrix = new int[arr.length][];
 
         for (int i = 0; i < arr.length; i++) {
-            char[] column = arr[i].toCharArray();
-            List<Integer> islandsInRow = new ArrayList<>();
-            for (int j = 0; j < column.length; j++) {
-                if (column[j] == 'X') {
-                    islandsInRow.add(j);
-                }
+            matrix[i] = new int[arr[i].length()];
+            char[] row = arr[i].toCharArray();
+            for (int j = 0; j < row.length; j++) {
+                matrix[i][j] = row[j] == 'X' ? 1 : 0;
             }
-            islands.put(i, islandsInRow);
         }
 
-        // Code away
-        return "";
+        int perimeter = 0;
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (matrix[r][c] == 1) {
+                    perimeter += 4;
+                    if (r > 0 && matrix[r - 1][c] == 1) {
+                        perimeter -= 2;
+                    }
+                    if (c > 0 && matrix[r][c - 1] == 1) {
+                        perimeter -= 2;
+                    }
+                }
+            }
+        }
+
+        return "Total land perimeter: " + perimeter;
     }
 }
