@@ -54,7 +54,8 @@ public class PaginationHelper<I> {
    * returns the number of pages
    */
   public int pageCount() {
-      return (int) Math.ceil((double) itemCount() / pageSize);
+      int pageCount = itemCount() / pageSize;
+      return itemCount() % pageSize == 0 ? pageCount : pageCount + 1;
   }
   
   /**
@@ -62,16 +63,16 @@ public class PaginationHelper<I> {
    * this method should return -1 for pageIndex values that are out of range
    */
   public int pageItemCount(int pageIndex) {
-    int possibleItemsCount = pageIndex * pageSize;
-    if (itemCount() == 0 || possibleItemsCount > itemCount() || possibleItemsCount < 0) {
-        return -1;
-    }
-    int diff = itemCount() - possibleItemsCount;
-    if (diff < pageSize) {
-        return diff;
-    } else {
-        return pageSize;
-    }
+      if (pageIndex < 0 || itemCount() == 0 || pageIndex > pageCount()) {
+          return -1;
+      }
+
+      if (pageIndex + 1 == pageCount()) {
+          int diff = itemCount() % pageSize;
+          return diff == 0 ? pageSize : diff;
+      } else {
+          return pageSize;
+      }
   }
   
   /**
@@ -87,6 +88,6 @@ public class PaginationHelper<I> {
         itemIndex -= pageSize;
         pageCounter +=1;
     }
-    return pageCounter;
+    return pageCounter - 1;
   }
 }
