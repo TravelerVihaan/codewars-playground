@@ -31,26 +31,30 @@ import java.util.List;
 
 public class PaginationHelper<I> {
 
+  private final List<I> content;
+  private final int pageSize;
+
   /**
    * The constructor takes in an array of items and a integer indicating how many
    * items fit within a single page
    */
   public PaginationHelper(List<I> collection, int itemsPerPage) {
-    
+      this.pageSize = itemsPerPage;
+      this.content = collection;
   }
   
   /**
    * returns the number of items within the entire collection
    */
   public int itemCount() {
-    return 0;
+    return content.size();
   }
   
   /**
    * returns the number of pages
    */
   public int pageCount() {
-    return 0;
+      return (int) Math.ceil((double) itemCount() / pageSize);
   }
   
   /**
@@ -58,7 +62,16 @@ public class PaginationHelper<I> {
    * this method should return -1 for pageIndex values that are out of range
    */
   public int pageItemCount(int pageIndex) {
-    return 0;
+    int possibleItemsCount = pageIndex * pageSize;
+    if (itemCount() == 0 || possibleItemsCount > itemCount() || possibleItemsCount < 0) {
+        return -1;
+    }
+    int diff = itemCount() - possibleItemsCount;
+    if (diff < pageSize) {
+        return diff;
+    } else {
+        return pageSize;
+    }
   }
   
   /**
@@ -66,6 +79,14 @@ public class PaginationHelper<I> {
    * this method should return -1 for itemIndex values that are out of range
    */
   public int pageIndex(int itemIndex) {
-    return 0;
+    if (itemIndex > itemCount() || itemIndex < 0 || itemCount() == 0) {
+        return -1;
+    }
+    int pageCounter = 0;
+    while (itemIndex > 0) {
+        itemIndex -= pageSize;
+        pageCounter +=1;
+    }
+    return pageCounter;
   }
 }
