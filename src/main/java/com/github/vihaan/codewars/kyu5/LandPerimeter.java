@@ -1,5 +1,10 @@
 package com.github.vihaan.codewars.kyu5;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Given an array arr of strings, complete the function by calculating
  * the total perimeter of all the islands. Each piece of land will be marked with 'X' while
@@ -30,13 +35,20 @@ public class LandPerimeter {
 	public static String landPerimeter(String[] arr) {
         int maxHeight = arr.length;
 
-        for (int i = 0; i < arr.length; i++) {
-            char[] column = arr[0].toCharArray();
-            for (int j = 0; j < column.length; j++) {
+        Map<Integer, List<Integer>> islands = new HashMap<>();
 
+        for (int i = 0; i < arr.length; i++) {
+            char[] column = arr[i].toCharArray();
+            List<Integer> islandsInRow = new ArrayList<>();
+            for (int j = 0; j < column.length; j++) {
+                if (column[j] == 'X') {
+                    islandsInRow.add(j);
+                }
             }
+            islands.put(i, islandsInRow);
         }
-    // Code away
-    return "";
-  }
+
+        // Code away
+        return "";
+    }
 }
