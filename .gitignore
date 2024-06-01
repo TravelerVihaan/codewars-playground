@@ -4,8 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-./idea
-./idea/
+/.idea
 .idea/modules.xml
 .idea/workspace.xml
 .idea/jarRepositories.xml
@@ -14,6 +13,10 @@ target/
 *.iws
 *.iml
 *.ipr
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/jpa-buddy.xml
+/.idea/vcs.xml
+/.idea/misc.xml
 
 ### Eclipse ###
 .apt_generated
@@ -39,7 +42,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-/.idea/codeStyles/codeStyleConfig.xml
-/.idea/jpa-buddy.xml
-/.idea/vcs.xml
-/.idea/misc.xml
