@@ -5,7 +5,9 @@ target/
 
 ### IntelliJ IDEA ###
 ./idea
+./idea/
 .idea/modules.xml
+.idea/workspace.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
@@ -38,3 +40,6 @@ build/
 ### Mac OS ###
 .DS_Store
 /.idea/codeStyles/codeStyleConfig.xml
+/.idea/jpa-buddy.xml
+/.idea/vcs.xml
+/.idea/misc.xml
