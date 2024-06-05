@@ -35,7 +35,24 @@ package com.github.vihaan.codewars.kyu5;
  * There are some static tests at the beginning and many random tests if you submit your solution.
  */
 class PlayWithTwoStrings {
-  public static String workOnStrings(String a, String b) {
-    return "";
-  }
+    public static String workOnStrings(String a, String b) {
+        return transformInputString(a, b) + transformInputString(b, a);
+    }
+
+    private static String transformInputString(String firstInput, String secondInput) {
+        StringBuilder firstOutput = new StringBuilder();
+        for (char character : firstInput.toCharArray()) {
+            long occurrences = secondInput.chars().filter(letter -> letter == Character.toLowerCase(character) || letter == Character.toUpperCase(character)).count();
+            if (occurrences % 2 != 0) {
+                    if (character == Character.toLowerCase(character)) {
+                        firstOutput.append(Character.toUpperCase(character));
+                    } else if (character == Character.toUpperCase(character)) {
+                        firstOutput.append(Character.toLowerCase(character));
+                    }
+            } else {
+                firstOutput.append(character);
+            }
+        }
+        return firstOutput.toString();
+    }
 }
