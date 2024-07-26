@@ -1,5 +1,11 @@
 package com.github.vihaan.codewars.kyu4;
 
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 /*
 Given two strings s1 and s2, we want to visualize how different the two strings are. We will only take into account the lowercase letters (a to z). First let us count the frequency of each lowercase letters in s1 and s2.
 
@@ -46,6 +52,54 @@ mix(s1, s2) --> "1:mmmmmm/E:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/E:ee/E
 public class Mixing {
 
     public static String mix(String s1, String s2) {
-        return "";// your code
+        Map<Character, Long> s1Stats = countOccurrences(s1);
+        Map<Character, Long> s2Stats = countOccurrences(s2);
+        Map<Character, String> results = new HashMap<>();
+        s1Stats.forEach((key, value) -> {
+            Integer s1charCount = value.intValue();
+            int s2charCount = s2Stats.getOrDefault(key, 0L).intValue();
+            if (s1charCount > 1 || s2charCount > 1) {
+
+                results.put(
+                    key,
+                    definePrefix(s1charCount.compareTo(s2charCount))
+                        .append(String.valueOf(key).repeat(Integer.max(value.intValue(), s2charCount)))
+                        .toString()
+                );
+                s2Stats.remove(key);
+            }
+        });
+        s2Stats.entrySet().stream()
+            .filter(e -> e.getValue() > 1)
+            .forEach(e -> results.put(
+                e.getKey(),
+                "2:" + String.valueOf(e.getKey()).repeat(e.getValue().intValue())
+            ));
+
+        StringBuilder resultSb = new StringBuilder();
+        results.values().stream()
+            .sorted(Comparator.comparingInt(String::length).reversed().thenComparing(String::valueOf))
+            .forEach(result -> resultSb.append(result).append("/"));
+        String result = resultSb.toString();
+        return result.endsWith("/") ? result.substring(0, result.length() - 1) : result;
+    }
+
+    private static StringBuilder definePrefix(int comparisonResult) {
+        StringBuilder sb = new StringBuilder();
+        if (comparisonResult < 0) {
+            sb.append("2");
+        } else if (comparisonResult > 0) {
+            sb.append("1");
+        } else {
+            sb.append("=");
+        }
+        return sb.append(":");
+    }
+
+    private static Map<Character, Long> countOccurrences(String input) {
+        return input.chars()
+            .mapToObj(c -> (char) c)
+            .filter(Character::isLowerCase)
+            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 }
