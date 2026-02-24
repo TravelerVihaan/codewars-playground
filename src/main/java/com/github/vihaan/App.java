@@ -6,7 +6,7 @@ package com.github.vihaan;
  */
 public class App 
 {
-    public static void main( String[] args )
+    static void main (String[] args)
     {
         System.out.println( "Hello World!" );
     }
