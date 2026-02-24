@@ -15,5 +15,6 @@ package com.github.vihaan.codewars.kyu6;
 class SimpleTimeDiff{
     public static String solve(String [] arr){
           //..
+        return null;
     }
 }
