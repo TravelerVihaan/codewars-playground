@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class SimpleTimeDiffTest{    
+public class SimpleTimeDiffTest {
     @Test
     public void basicTests(){     
         assertEquals("23:59",SimpleTimeDiff.solve(new String[] {"14:51"}));
