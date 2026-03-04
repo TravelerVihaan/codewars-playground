@@ -13,12 +13,29 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <javalin.version>7.0.1</javalin.version>
+        <sl4j.simple.version>2.0.17</sl4j.simple.version>
+
         <junit.jupiter.version>5.11.0-M1</junit.jupiter.version>
         <junit.platform.version>1.11.0-M2</junit.platform.version>
         <junit4.version>4.13.2</junit4.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>${javalin.version}</version>
+        </dependency>
+
+        <!-- Logging dependencies -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${sl4j.simple.version}</version></dependency>
+
+        <!-- Test dependencies -->
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
