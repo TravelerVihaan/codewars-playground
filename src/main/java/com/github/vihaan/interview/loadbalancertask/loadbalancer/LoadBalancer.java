@@ -9,10 +9,10 @@ import com.github.vihaan.interview.loadbalancertask.storage.ServiceStorage;
  * 	Load balancer should accept up to 10 backend instances
  * 	The code should be production ready
  * 	The Loadbalancer will be released as a library
- *
+ * <p>
  * 2. 	Develop an algorithm that, when invoking the Load Balancer's get() method multiple times,
  * should return one backend-instance choosing between the registered ones randomly.
- *
+ * <p>
  * Technical (Load Balancer Design): Implement a load balancer with Random/Round Robin algorithms in TDD style.
  * Covered concurrency handling, locking mechanisms, and TDD approach. The focus was on covering all scenarios with tests and SOLID principles.
  */
