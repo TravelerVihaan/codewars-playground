@@ -1,7 +1,7 @@
-package com.github.vihaan.loadbalancertask.storage;
+package com.github.vihaan.interview.loadbalancertask.storage;
 
-import com.github.vihaan.loadbalancertask.model.Service;
-import com.github.vihaan.loadbalancertask.storage.selection.RandomSelectionStrategy;
+import com.github.vihaan.interview.loadbalancertask.model.Service;
+import com.github.vihaan.interview.loadbalancertask.storage.selection.RandomSelectionStrategy;
 
 public class ServiceStorageFactory {
 

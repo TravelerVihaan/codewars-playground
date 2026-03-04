@@ -1,4 +1,4 @@
-package com.github.vihaan.loadbalancertask.storage.exception;
+package com.github.vihaan.interview.loadbalancertask.storage.exception;
 
 public class StorageLimitReachedException extends RuntimeException {
     public StorageLimitReachedException (String message) {

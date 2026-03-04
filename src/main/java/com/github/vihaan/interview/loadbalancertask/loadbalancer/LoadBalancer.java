@@ -1,7 +1,7 @@
-package com.github.vihaan.loadbalancertask.loadbalancer;
+package com.github.vihaan.interview.loadbalancertask.loadbalancer;
 
-import com.github.vihaan.loadbalancertask.model.Service;
-import com.github.vihaan.loadbalancertask.storage.ServiceStorage;
+import com.github.vihaan.interview.loadbalancertask.model.Service;
+import com.github.vihaan.interview.loadbalancertask.storage.ServiceStorage;
 
 /**
  * 1. 	Create a LoadBalancer class that has a method to register backend instances

@@ -1,4 +1,4 @@
-package com.github.vihaan.loadbalancertask.storage.selection;
+package com.github.vihaan.interview.loadbalancertask.storage.selection;
 
 import java.util.Collection;
 import java.util.Random;

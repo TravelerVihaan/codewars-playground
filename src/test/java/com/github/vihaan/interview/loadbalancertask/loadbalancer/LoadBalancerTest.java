@@ -1,10 +1,12 @@
-package com.github.vihaan.loadbalancertask.loadbalancer;
+package com.github.vihaan.interview.loadbalancertask.loadbalancer;
 
-import com.github.vihaan.loadbalancertask.model.BackendService;
-import com.github.vihaan.loadbalancertask.model.Service;
-import com.github.vihaan.loadbalancertask.storage.ServiceStorage;
-import com.github.vihaan.loadbalancertask.storage.ServiceStorageFactory;
-import com.github.vihaan.loadbalancertask.storage.exception.StorageLimitReachedException;
+import com.github.vihaan.interview.loadbalancertask.loadbalancer.LoadBalancer;
+import com.github.vihaan.interview.loadbalancertask.loadbalancer.LoadBalancerFactory;
+import com.github.vihaan.interview.loadbalancertask.model.BackendService;
+import com.github.vihaan.interview.loadbalancertask.model.Service;
+import com.github.vihaan.interview.loadbalancertask.storage.ServiceStorage;
+import com.github.vihaan.interview.loadbalancertask.storage.ServiceStorageFactory;
+import com.github.vihaan.interview.loadbalancertask.storage.exception.StorageLimitReachedException;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.CountDownLatch;
