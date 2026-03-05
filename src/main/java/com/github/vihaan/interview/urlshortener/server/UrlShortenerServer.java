@@ -1,18 +1,52 @@
 package com.github.vihaan.interview.urlshortener.server;
 
+import com.github.vihaan.interview.urlshortener.service.UrlShortingService;
 import io.javalin.Javalin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * Manages the Javalin HTTP server for URL shortener application.
+ * Responsible for server lifecycle: creation, configuration, and startup.
+ */
 public final class UrlShortenerServer {
 
     private static final int SERVER_PORT = 8081;
-    private static Javalin server;
+    private static final Logger log = LoggerFactory.getLogger(UrlShortenerServer.class);
 
-    private UrlShortenerServer() {}
+    private final Javalin app;
+    private final UrlShortingService urlShortingService;
 
-    public static Javalin startServer() {
-        if (server == null) {
-            server = Javalin.create().start(SERVER_PORT);
+    public UrlShortenerServer(UrlShortingService urlShortingService) {
+        this.urlShortingService = urlShortingService;
+        this.app = Javalin.create(config -> {
+            UrlShortenerRoutes.registerRoutes(config.routes, urlShortingService);
+        });
+    }
+
+    /**
+     * Starts the server and registers routes.
+     */
+    public Javalin start() {
+        app.start(SERVER_PORT);
+        log.info("URL Shortener server started on port {}", SERVER_PORT);
+        return app;
+    }
+
+    /**
+     * Stops the server gracefully.
+     */
+    public void stop() {
+        if (app != null) {
+            app.stop();
+            log.info("URL Shortener server stopped");
         }
-        return server;
+    }
+
+    /**
+     * Returns the underlying Javalin instance.
+     */
+    public Javalin getApp() {
+        return app;
     }
 }
