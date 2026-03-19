@@ -3,7 +3,9 @@ package com.github.vihaan.codewars.kyu6;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +29,8 @@ class SimpleTimeDiff {
                 .map(LocalTime::parse)
                 .sorted(LocalTime::compareTo)
                 .collect(Collectors.toCollection(LinkedList::new));
+        Arrays.stream(arr).forEach(System.out::println);
+
         if (times.isEmpty()) {
             return null;
         }
@@ -42,13 +46,20 @@ class SimpleTimeDiff {
 
             while (timeIterator.hasNext()) {
                 LocalTime next = timeIterator.next();
-                resultDiffs.add(LocalTime.ofSecondOfDay(Duration.between(current.plusMinutes(1), next)
+                if (current.equals(next)) {
+                    resultDiffs.add(LocalTime.ofSecondOfDay(0));
+                    continue;
+                }
+                LocalTime curr2 = current.plusMinutes(1);
+                resultDiffs.add(LocalTime.ofSecondOfDay(Duration.between(curr2, next)
                         .abs()
                         .toSeconds()));
-                if (!timeIterator.hasNext())
-                    resultDiffs.add(LocalTime.ofSecondOfDay(
-                        Duration.between(next, LocalTime.MIDNIGHT).abs().toSeconds() +
-                            Duration.between(LocalTime.MIDNIGHT, times.getFirst()).abs().toSeconds()));
+                if (!timeIterator.hasNext()) {
+                    long duration1 = Duration.between(next, LocalTime.MAX).abs().toSeconds();
+                    long duration2 = Duration.between(LocalTime.MIDNIGHT, times.getFirst()).abs().toSeconds();
+                    LocalTime time = LocalTime.ofSecondOfDay(duration1 + duration2);
+                    resultDiffs.add(time);
+                }
             current = next;
             }
         }
