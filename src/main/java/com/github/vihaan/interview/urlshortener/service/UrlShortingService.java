@@ -11,6 +11,4 @@ public class UrlShortingService {
         this.urlStorage = urlStorage;
         this.shorteningStrategy = shorteningStrategy;
     }
-
-
 }

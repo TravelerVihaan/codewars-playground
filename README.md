@@ -5,16 +5,13 @@ Solutions are grouped in directories by their declared difficulty level.
 Each task has description in comment above class in java source file.
 
 
-## Unfinished:
- * NextBiggerNumber
- * Mixing
- * BalancedParens
- * PokerHand
- * BattleField
- * Dinglemouse
- * Anagrams
- * Stream
- * Maze
- * BitCount
- * Equation
- * BurrowsWheeler
+### [Unfinished tasks](https://www.codewars.com/users/TravelerVihaan/unfinished)
+### kyu 5:
+[Card Game](https://www.codewars.com/kata/61fef3a2d8fa98021d38c4e5)<br>
+[Let's Play Darts!](https://www.codewars.com/kata/5870db16056584eab0000006)<br>
+[Four Letter Words ~ Anagrams](https://www.codewars.com/kata/5cb5ebc403c3ff477840393a)<br>
+[Some Egyptian fractions](https://www.codewars.com/kata/54f8693ea58bce689100065f)<br>
+[Snakes and Ladders](https://www.codewars.com/kata/587136ba2eefcb92a9000027)<br>
+[First non-repeating character)](https://www.codewars.com/kata/52bc74d4ac05d0945d00054e)<br>
+[First Variation on Caesar Cipher](https://www.codewars.com/kata/5508249a98b3234f420000fb)<br>
+[Pick peaks](https://www.codewars.com/kata/5279f6fe5ab7f447890006a7)<br>

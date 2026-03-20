@@ -15,12 +15,10 @@ public final class UrlShortenerServer {
     private static final Logger log = LoggerFactory.getLogger(UrlShortenerServer.class);
 
     private final Javalin app;
-    private final UrlShortingService urlShortingService;
 
     public UrlShortenerServer(UrlShortingService urlShortingService) {
-        this.urlShortingService = urlShortingService;
         this.app = Javalin.create(config -> {
-            UrlShortenerRoutes.registerRoutes(config.routes, urlShortingService);
+            config.routes.
         });
     }
 
