@@ -18,7 +18,7 @@ public final class UrlShortenerServer {
 
     public UrlShortenerServer(UrlShortingService urlShortingService) {
         this.app = Javalin.create(config -> {
-            config.routes.
+           // config.routes.
         });
     }
 
