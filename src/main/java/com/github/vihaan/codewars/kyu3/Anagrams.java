@@ -33,7 +33,7 @@ QUESTION = 24572
 BOOKKEEPER = 10743
  */
 public class Anagrams {
-  public BigInteger listPosition(String word) {
-    return BigInteger.ZERO;
-  }
+    public BigInteger listPosition(String word) {
+        return BigInteger.ZERO;
+    }
 }

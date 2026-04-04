@@ -21,7 +21,26 @@ package com.github.vihaan.codewars.kyu5;
 // Thus, Alice has 8 cards and Bob has 2
 
 class CardGame {
-  public static long cardGame(long n) {
-    return 0;
-  }
+    public static long cardGame(long n) {
+        long cardsStack = n;
+        long aliceCards = 0;
+
+        boolean aliceTurn = true;
+
+        while (cardsStack > 0) {
+            long cardsToTake;
+            long tempCardsStack = cardsStack / 2;
+            if (cardsStack % 2 == 0 && (tempCardsStack % 2 == 1 || tempCardsStack <= 4)) {
+                cardsToTake = cardsStack / 2;
+            } else {
+                cardsToTake = 1;
+            }
+            if (aliceTurn)
+                aliceCards += cardsToTake;
+
+            cardsStack -= cardsToTake;
+            aliceTurn = !aliceTurn;
+        }
+        return aliceCards;
+    }
 }
