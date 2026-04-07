@@ -1,5 +1,7 @@
 package com.github.vihaan.codewars.kyu5;
 
+import java.util.Set;
+
 /**
  * Create your own mechanical dartboard that gives back your score based on the coordinates of your dart.
  *
@@ -32,18 +34,49 @@ public class Dartboard {
 
     public String getScore(double x, double y)
     {
-        double radius = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-        String prefix = switch (radius) {
-            case radius <= BULLS_EYE -> "DB";
-            case radius <= BULL -> "SB";
-            case radius >= TRIPLE_RING_INNER && radius <= TRIPLE_RING_OUTER -> "T";
-            case radius >= DOUBLE_RING_INNER && radius <= DOUBLE_RING_OUTER -> "D";
-            case radius > DOUBLE_RING_OUTER -> "X";
-            default -> "";
+        String prefix = calculatePrefix(x, y);
+        if (Set.of("DB", "SB", "X").contains(prefix)) {
+            return prefix;
         }
-        // Start your coding here...
-        return "";
+        double angle = Math.atan2(x, y);
+        if (angle < 0) {
+            angle += 2 * Math.PI;
+        }
+        double sectorSize = 2 * Math.PI / 20;
+
+        angle += sectorSize / 2;
+        if (angle >= 2 * Math.PI) {
+            angle -= 2 * Math.PI;
+        }
+
+        int sectorIndex = (int) (angle / sectorSize);
+
+        return prefix + dartboard[sectorIndex];
     }
+
+    private static String calculatePrefix (double x, double y) {
+        double radius = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+        String prefix;
+        if (radius < BULLS_EYE) {
+            prefix = "DB";
+        } else if (radius > BULLS_EYE && radius < BULL) {
+            prefix = "SB";
+        } else if (radius > TRIPLE_RING_INNER && radius < TRIPLE_RING_OUTER) {
+            prefix = "T";
+        } else if (radius > DOUBLE_RING_INNER && radius < DOUBLE_RING_OUTER) {
+            prefix = "D";
+        } else if (radius >= DOUBLE_RING_OUTER) {
+            prefix = "X";
+        } else {
+            prefix = "";
+        }
+        return prefix;
+    }
+
+    final int[] dartboard = {
+        20, 1, 18, 4, 13, 6, 10, 15, 2, 17,
+        3, 19, 7, 16, 8, 11, 14, 9, 12, 5
+    };
 
     private static final double BULLS_EYE = 12.70 / 2;
     private static final double BULL = 31.8 / 2;

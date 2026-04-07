@@ -7,7 +7,6 @@ Each task has description in comment above class in java source file.
 
 ### [Unfinished tasks](https://www.codewars.com/users/TravelerVihaan/unfinished)
 ### kyu 5:
-[Let's Play Darts!](https://www.codewars.com/kata/5870db16056584eab0000006)<br>
 [Four Letter Words ~ Anagrams](https://www.codewars.com/kata/5cb5ebc403c3ff477840393a)<br>
 [Some Egyptian fractions](https://www.codewars.com/kata/54f8693ea58bce689100065f)<br>
 [Snakes and Ladders](https://www.codewars.com/kata/587136ba2eefcb92a9000027)<br>
