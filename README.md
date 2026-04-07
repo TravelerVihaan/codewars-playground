@@ -14,7 +14,6 @@ Each task has description in comment above class in java source file.
 [Pick peaks](https://www.codewars.com/kata/5279f6fe5ab7f447890006a7)<br>
 
 ### kyu 4:
-[Most frequently used words in a text](https://www.codewars.com/kata/51e056fe544cf36c410000fb)<br>
 [Simplexer](https://www.codewars.com/kata/54b8204dcd7f514bf2000348)<br>
 [Burrows-Wheeler-Transformation](https://www.codewars.com/kata/54ce4c6804fcc440a1000ecb)<br>
 [Differentiate a polynomial](https://www.codewars.com/kata/566584e3309db1b17d000027)<br>
