@@ -14,7 +14,6 @@ Each task has description in comment above class in java source file.
 [Pick peaks](https://www.codewars.com/kata/5279f6fe5ab7f447890006a7)<br>
 
 ### kyu 4:
-[Counting Change Combinations](https://www.codewars.com/kata/541af676b589989aed0009e7)<br>
 [Explosive Sum](https://www.codewars.com/kata/52ec24228a515e620b0005ef)<br>
 [Most frequently used words in a text](https://www.codewars.com/kata/51e056fe544cf36c410000fb)<br>
 [Simplexer](https://www.codewars.com/kata/54b8204dcd7f514bf2000348)<br>
