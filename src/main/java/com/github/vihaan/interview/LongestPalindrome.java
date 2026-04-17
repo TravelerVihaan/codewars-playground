@@ -32,4 +32,12 @@ public class LongestPalindrome {
         } while (j > i);
         return true;
     }
+
+    public static String findLongestPalindromeOn2(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+        char[] chars = s.toCharArray();
+        
+    }
 }

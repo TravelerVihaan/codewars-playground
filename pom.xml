@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.vihaan</groupId>
-    <artifactId>codewars-playground</artifactId>
+    <artifactId>coding-tasks-playground</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>codewars-playground</name>
+    <name>coding-tasks-playground</name>
     <packaging>jar</packaging>
 
     <properties>
