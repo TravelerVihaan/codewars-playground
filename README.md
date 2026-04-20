@@ -11,7 +11,6 @@ Each task has description in comment above class in java source file.
 [Some Egyptian fractions](https://www.codewars.com/kata/54f8693ea58bce689100065f)<br>
 [Snakes and Ladders](https://www.codewars.com/kata/587136ba2eefcb92a9000027)<br>
 [First Variation on Caesar Cipher](https://www.codewars.com/kata/5508249a98b3234f420000fb)<br>
-[Pick peaks](https://www.codewars.com/kata/5279f6fe5ab7f447890006a7)<br>
 
 ### kyu 4:
 [Simplexer](https://www.codewars.com/kata/54b8204dcd7f514bf2000348)<br>
