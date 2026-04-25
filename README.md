@@ -19,9 +19,13 @@ Each task has description in comment above class in java source file.
 [Count ones in a segment](https://www.codewars.com/kata/596d34df24a04ee1e3000a25)<br>
 [Functional streams](https://www.codewars.com/kata/5512ec4bbe2074421d00028c)<br>
 [Simple maze](https://www.codewars.com/kata/56bb9b7838dd34d7d8001b3c)<br>
-[Ranking Poker Hands](https://www.codewars.com/kata/5739174624fc28e188000465)<br>
 [Catching Car Mileage Numbers](https://www.codewars.com/kata/52c4dd683bfd3b434c000292)<br>
+[Explosive Sum](https://www.codewars.com/kata/52ec24228a515e620b0005ef)<br>
+[Interfacing](https://www.codewars.com/kata/54c183dd3f069611c3000f97)<br>
+[Magnet particules in boxes](https://www.codewars.com/kata/56c04261c3fcf33f2d000534)<br>
 
 ### kyu 3
 [Alphabetic Anagrams](https://www.codewars.com/kata/53e57dada0cb0400ba000688)<br>
 [Battleship field validator](https://www.codewars.com/kata/52bb6539a4cf1b12d90005b7)<br>
+[Line Safari - Is that a line?](https://www.codewars.com/kata/59c5d0b0a25c8c99ca000237)<br>
+[Screen Locking Patterns](https://www.codewars.com/kata/585894545a8a07255e0002f1)<br>
