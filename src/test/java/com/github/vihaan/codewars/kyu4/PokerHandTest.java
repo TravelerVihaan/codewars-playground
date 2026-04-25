@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PokerHandTest
-{   
+{
     private PokerHand.Result loss = PokerHand.Result.LOSS;
     private PokerHand.Result win = PokerHand.Result.WIN;
     private PokerHand.Result tie = PokerHand.Result.TIE;
-    
+
     @Test
     public void PokerHandRankingTest()
     {
@@ -29,12 +29,14 @@ public class PokerHandTest
         Test("Highest card loses",                 loss, "2S 3H 6H 7S 9C", "7H 3C TH 6H 9S");
         Test("Highest card wins",                  win,  "4S 5H 6H TS AC", "3S 5H 6H TS AC");
 	      Test("Equal cards is tie",		             tie,  "2S AH 4H 5S 6C", "AD 4C 5H 6H 2C");
+	      Test("Equal cards is tie",		             win,  "AS 3C KH AD KC", "4S 3H 2C 7S 5H");
+	      Test("Equal cards is tie",		             win,  "KD 6S 9D TH AD", "JH 8S TH AH QH");
     }
-    
+
     private void Test(String description, PokerHand.Result expected, String playerHand, String opponentHand)
     {
         PokerHand player = new PokerHand(playerHand);
-        PokerHand opponent = new PokerHand(opponentHand);        
+        PokerHand opponent = new PokerHand(opponentHand);
         assertEquals(expected, player.compareWith(opponent), description + ":");
     }
 }
