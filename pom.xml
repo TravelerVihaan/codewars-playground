@@ -9,9 +9,9 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>25</java.version>
-        <maven.compiler.source>25</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <java.version>26</java.version>
+        <maven.compiler.source>26</maven.compiler.source>
+        <maven.compiler.target>26</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <javalin.version>7.0.1</javalin.version>
@@ -20,6 +20,7 @@
         <junit.jupiter.version>5.11.0-M1</junit.jupiter.version>
         <junit.platform.version>1.11.0-M2</junit.platform.version>
         <junit4.version>4.13.2</junit4.version>
+        <assertj.version>3.27.7</assertj.version>
     </properties>
 
     <dependencies>
@@ -51,7 +52,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.27.7</version>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
